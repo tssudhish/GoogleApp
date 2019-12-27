@@ -27,6 +27,8 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
 SAMPLE_RANGE_NAME = 'Class Data!A2:E'
 
+LOCAL_SPREADSHEET_ID = '1HMnlWGjWlj-u4z1HWaM_lPQHE55vztVd5VYZBhNxqq4'
+LOCAL_RANGE_NAME = 'Process!B4:D40'
 def main():
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
@@ -54,17 +56,17 @@ def main():
 
     # Call the Sheets API
     sheet = service.spreadsheets()
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=SAMPLE_RANGE_NAME).execute()
+    result = sheet.values().get(spreadsheetId=LOCAL_SPREADSHEET_ID, range=LOCAL_RANGE_NAME ).execute()
     values = result.get('values', [])
 
     if not values:
         print('No data found.')
     else:
-        print('Name, Major:')
+        #print('Name, Major:')
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
+#            print('%s, %s' % (row[0], row[4]))
+            print(row)
 
 if __name__ == '__main__':
     main()
